@@ -34,7 +34,7 @@ def hbase_status():
 	grep_dead_cmd = subprocess.Popen(grep_dead_servers,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
 
 
-	awk_nodes_info_cmd = "awk '/dead/{f=0} f; /live/{f=1}' /root/test.tmp"
+	awk_nodes_info_cmd = "awk '/dead/{f=0} f; /live/{f=1}' " + HBASE_METRICS_TMP_FILE
 	awk_nodes_info_cmd = subprocess.Popen(awk_nodes_info_cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
 
 	nodes_info_output = awk_nodes_info_cmd.communicate()[0]
